@@ -14,7 +14,7 @@ export class TicketsService {
 
 
   getTickets() {
-    return this.http.get(SERVER_URL + '/getTickets', {});
+    return this.http.get(SERVER_URL + '/tickets', {});
   }
 
 }

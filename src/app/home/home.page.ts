@@ -1,3 +1,4 @@
+import { error } from '@angular/compiler/src/util';
 import { Component } from '@angular/core';
 import { ITicket } from '../interfaces/ticket.interface';
 import { TicketsService } from '../services/tickets.service';
@@ -8,13 +9,15 @@ import { TicketsService } from '../services/tickets.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  listTicket: Array<ITicket>;
+  listTickets: Array<ITicket>;
 
   constructor(private ticketsService: TicketsService) {}
 
   ngOnInit() {
-    this.ticketsService.getTickets().subscribe((response: Array<ITicket>) => {
-        debugger;
+    this.ticketsService.getTickets().subscribe((response: {tickets: Array<ITicket>}) => {
+      this.listTickets = response.tickets;
+    }, error => {
+        console.error(error);
     });
   }
 

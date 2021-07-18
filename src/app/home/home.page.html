@@ -1,8 +1,8 @@
 
 
 <ion-content [fullscreen]="true">
-  <ion-header>
-    <ion-toolbar style="--border-width: 0px;">
+  <ion-header mode="ios">
+    <ion-toolbar style="--border-width: 0px;" mode="ios">
       <ion-buttons slot="start">
         <ion-button>
           <ion-icon slot="icon-only" name="chevron-back-outline" color="danger"></ion-icon>
@@ -13,31 +13,47 @@
   </ion-header>
   
   <div id="container">
-   <ion-card color="light">
-     <ion-card-title>
-       Tickets
-     </ion-card-title>
-     <ion-card-content>
-       <ion-list>
-         <ion-item color="light">
-         </ion-item>
-         <ion-item color="light">
-          <ion-label>
-            <div style="display: flex; flex-direction: row; justify-content: space-between;">
-              <h4 slot="start">De: Usuario</h4>
-              <h4 slot="end">Enviado: 25/24</h4>
-            </div>
-          </ion-label>
-         </ion-item>
-       </ion-list>
-     </ion-card-content>
-   </ion-card>
+    <div>
+      <ion-card color="light" *ngIf="listTickets">
+        <ion-card-title class="card-title">
+          Tickets
+        </ion-card-title>
+        <ion-card-content>
+          <div class="custom-divider"></div>
+          <ion-list>
+            <ion-item color="light" *ngFor="let ticket of listTickets">
+             <ion-label>
+               <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                 <h5 slot="start">De: {{ticket.from}}</h5>
+                 <h5 slot="end">Enviado: {{ticket.date | date :'dd/MM/yy HH:MM'}}</h5>
+               </div>
+               <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                <h4 slot="start">Nuevo</h4>
+                <h4 slot="end">{{ticket.body}}</h4>
+              </div>
+             </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div>
+      <ion-card *ngIf="!listTickets">
+        <ion-card-title>Nada para mostrar</ion-card-title>
+      </ion-card>
+    </div>
   </div>
   
 </ion-content>
 
 <ion-footer class="ion-no-border">
   <ion-toolbar>
-    <ion-img src="assets/tienda.png" style="width: 300px;"></ion-img>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-img src="assets/tienda.png" class="image-footer"></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-footer>

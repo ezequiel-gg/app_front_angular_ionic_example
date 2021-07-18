@@ -29,3 +29,18 @@
 ion-content{
  --ion-background-color:#E9ECEC;
 }
+
+.image-footer {
+  height: 10vh !important;
+  width: auto !important;
+  align-items: center;
+}
+
+.custom-divider {
+  border-top: 1.5px solid #bbb;
+}
+
+.card-title {
+  text-align: start;
+  padding-left: 10%;
+}
