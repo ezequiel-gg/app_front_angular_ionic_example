@@ -2,7 +2,10 @@ import { error } from '@angular/compiler/src/util';
 import { Component } from '@angular/core';
 import { ITicket } from '../interfaces/ticket.interface';
 import { TicketsService } from '../services/tickets.service';
-
+const STATUS = {
+  SOLVED: {color: 'tertiary', message: 'Respondido'},
+  NEW:{ color: 'danger', message: 'Nuevo'}
+}
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -21,4 +24,11 @@ export class HomePage {
     });
   }
 
+  determinateStatusColor(status): string {
+    return STATUS[status].color;
+  }
+
+  translateStatus(status): string {
+    return STATUS[status].message;
+  }
 }

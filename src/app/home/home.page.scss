@@ -26,8 +26,8 @@
   text-decoration: none;
 }
 
-ion-content{
- --ion-background-color:#E9ECEC;
+ion-content {
+  --ion-background-color: #E9ECEC;
 }
 
 .image-footer {
@@ -43,4 +43,26 @@ ion-content{
 .card-title {
   text-align: start;
   padding-left: 10%;
+}
+
+.list-tickets {
+  padding: 0.5rem;
+}
+
+.btn {
+  height: 1rem;
+  font-size: 0.8rem;
+}
+
+.body-text {
+  font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.row-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

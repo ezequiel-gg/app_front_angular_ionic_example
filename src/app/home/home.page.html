@@ -12,7 +12,6 @@
     </ion-toolbar>
   </ion-header>
   
-  <div id="container">
     <div>
       <ion-card color="light" *ngIf="listTickets">
         <ion-card-title class="card-title">
@@ -20,20 +19,25 @@
         </ion-card-title>
         <ion-card-content>
           <div class="custom-divider"></div>
-          <ion-list>
-            <ion-item color="light" *ngFor="let ticket of listTickets">
-             <ion-label>
-               <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                 <h5 slot="start">De: {{ticket.from}}</h5>
-                 <h5 slot="end">Enviado: {{ticket.date | date :'dd/MM/yy HH:MM'}}</h5>
-               </div>
-               <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                <h4 slot="start">Nuevo</h4>
-                <h4 slot="end">{{ticket.body}}</h4>
+          <div class="list-tickets">
+            <div  *ngFor="let ticket of listTickets; let last = last">
+              <div class="row-item">
+                <h6>De: {{ticket.from}}</h6>
+                <h6>Enviado: {{ticket.date | date :'dd/MM/yy HH:MM'}}</h6>
               </div>
-             </ion-label>
-            </ion-item>
-          </ion-list>
+
+              <div class="row-item">
+                <ion-button color="{{determinateStatusColor(ticket.status)}}" class="btn">{{translateStatus(ticket.status)}}</ion-button>
+                <h4 slot="end" class="body-text">{{ticket.body}}</h4>
+              </div>
+              <div class="row-item">
+                <h6 style="text-align: left;">{{ticket.subject}}</h6>
+                <ion-icon color="danger" name="chevron-forward-outline"></ion-icon>
+              </div>
+              <div class="custom-divider" *ngIf="!last"></div>
+
+            </div>
+          </div>
         </ion-card-content>
       </ion-card>
     </div>
@@ -42,7 +46,6 @@
         <ion-card-title>Nada para mostrar</ion-card-title>
       </ion-card>
     </div>
-  </div>
   
 </ion-content>
 
